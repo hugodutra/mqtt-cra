@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Col, Row, Typography } from "antd";
+import { Connection } from "./components/Connection";
+import { Subscriptions } from "./components/Subscriptions";
+
+import ClientContextProvider from "./helpers/ClientContext";
+import { Messages } from "./components/Messages";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ClientContextProvider>
+      <Typography.Title level={1}>MQTT WebClient</Typography.Title>
+      <Row gutter={[16, 16]}>
+        <Col span={10}>
+          <Connection />
+          <Subscriptions />
+        </Col>
+        <Col span={12} offset={2}>
+          <Messages />
+        </Col>
+      </Row>
+    </ClientContextProvider>
   );
 }
 
